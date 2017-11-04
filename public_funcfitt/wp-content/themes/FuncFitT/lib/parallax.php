@@ -69,7 +69,7 @@ genesis_register_sidebar( array(
 
 
 //* Register customizer options *//
-function ag_parallax_sections( $wp_customize ) {
+function fft_parallax_sections( $wp_customize ) {
   //* Add new section on Customizer
   
   //* Home Page
@@ -149,6 +149,44 @@ function ag_parallax_sections( $wp_customize ) {
       )
     )
   );
+  
+  $wp_customize->add_setting(
+    'fft_home_setting_background_image_4',
+    array(
+      'default' => '',
+      'sanitize_callback' => 'fft_sanitize_bgi',
+      )
+    );
+  
+  $wp_customize->add_control(
+    new WP_Customize_Image_Control(
+      $wp_customize, 'fft_home_background_image_4', array(
+        'label' => __( 'Background Image 4', 'fft' ),
+        'settings' => 'fft_home_setting_background_image_4',
+        'section' => 'fft_home_parallax_section',
+        'priority' => 21
+        )
+      )
+    );
+  
+  $wp_customize->add_setting(
+    'fft_home_setting_background_image_5',
+    array(
+      'default' => '',
+      'sanitize_callback' => 'fft_sanitize_bgi',
+      )
+    );
+  
+  $wp_customize->add_control(
+    new WP_Customize_Image_Control(
+      $wp_customize, 'fft_home_background_image_5', array(
+        'label' => __( 'Background Image 5', 'fft' ),
+        'settings' => 'fft_home_setting_background_image_5',
+        'section' => 'fft_home_parallax_section',
+        'priority' => 23
+        )
+      )
+    );
 
   //* Register color background sections
   $wp_customize->add_setting(
@@ -207,7 +245,44 @@ function ag_parallax_sections( $wp_customize ) {
       )
     )
   );
+  
+  $wp_customize->add_setting(
+    'fft_home_setting_color_background_4',
+    array(
+      'default' => '#000000',
+      'sanitize_callback' => 'sanitize_hex_color'
+    )
+  );
 
+  $wp_customize->add_control(
+    new WP_Customize_Color_Control(
+      $wp_customize, 'fft_home_color_bg_setting_4', array(
+        'label' => __( 'Background Color 4', 'fft' ),
+        'settings' => 'fft_home_setting_color_background_4',
+        'section' => 'fft_home_parallax_section',
+        'priority' => 22
+      )
+    )
+  );
+
+  $wp_customize->add_setting(
+    'fft_home_setting_color_background_5',
+    array(
+      'default' => '#000000',
+      'sanitize_callback' => 'sanitize_hex_color'
+    )
+  );
+
+  $wp_customize->add_control(
+    new WP_Customize_Color_Control(
+      $wp_customize, 'fft_home_color_bg_setting_5', array(
+        'label' => __( 'Background Color 5', 'fft' ),
+        'settings' => 'fft_home_setting_color_background_5',
+        'section' => 'fft_home_parallax_section',
+        'priority' => 24
+      )
+    )
+  );
   
   //* About Landing Page Sections *//
   //* Register background image sections
@@ -254,7 +329,7 @@ function ag_parallax_sections( $wp_customize ) {
 
 add_action( 'customize_register', 'fft_parallax_sections' );
 
-function ag_sanitize_bgi( $image, $setting ) {
+function fft_sanitize_bgi( $image, $setting ) {
   $mimes = array(
     'jpg|jpeg|jpe' => 'image/jpeg',
     'gif' => 'image/gif',
