@@ -18,7 +18,7 @@ add_action('wp_enqueue_scripts', 'fft_enqueue_parallax_script');
 
 
 
-function ag_enqueue_parallax_script() {
+function fft_enqueue_parallax_script() {
 
     wp_enqueue_script('parallax', get_stylesheet_directory_uri() . '/js/parallax.min.js', array('jquery'));
 
